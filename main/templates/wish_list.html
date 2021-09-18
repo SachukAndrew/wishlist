@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>Я хочу чтобы мне подарили</h1>
+    {% if is_owner_list %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"> ADD </button>
+        </form>
+    {% endif %}
+
+    {% for Product in wishlist.product.all %}
+        <a href="{{ product.link }}">{{ product.title }} </a><br>
+    {% endfor %}
+
+{% endblock %}
